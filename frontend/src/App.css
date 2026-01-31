@@ -1,0 +1,123 @@
+/* 1. LOAD MODERN FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700;800&display=swap');
+
+:root {
+  --primary: #6366f1;       /* Indigo */
+  --bg-color: #f3f4f6;      /* Light Grey */
+  --card-white: #ffffff;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  /* 2. APPLY BODY FONT */
+  font-family: 'Inter', sans-serif; 
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 60px;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  /* 3. APPLY HEADING FONT */
+  font-family: 'Poppins', sans-serif; 
+  color: var(--primary);
+  font-size: 3rem;
+  font-weight: 800; /* Extra Bold */
+  letter-spacing: -1px; /* Tightens letters for a modern look */
+  margin-bottom: 40px;
+}
+
+/* --- FORM STYLING --- */
+.task-form {
+  background: var(--card-white);
+  padding: 40px;
+  border-radius: 20px; /* Softer, rounder corners */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Spacing Rules */
+.task-form input:first-child {
+  margin-bottom: 25px !important; 
+}
+.task-form input:nth-child(2) {
+  margin-bottom: 35px !important;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif; /* Ensures inputs use the new font */
+  transition: all 0.2s;
+  box-sizing: border-box;
+  background: #f9fafb;
+}
+
+input:focus {
+  border-color: var(--primary);
+  background: white;
+  outline: none;
+}
+
+/* --- BUTTON STYLING --- */
+.add-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif; /* Button text pops more */
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.1s;
+}
+
+.add-btn:active {
+  transform: scale(0.98); /* Slight click effect */
+}
+
+/* --- TASK LIST STYLING --- */
+.task-list {
+  margin-top: 50px;
+  padding: 0;
+}
+
+.task-card {
+  background: white;
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  border-left: 6px solid var(--primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.task-card h3 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+}
+
+.task-card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
