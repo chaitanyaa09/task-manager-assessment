@@ -10,7 +10,7 @@ function App() {
 
   // Fetch tasks
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tasks')
+    axios.get('https://task-manager-assessment-v39u.onrender.com/api/tasks')
       .then(res => setTasks(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -19,7 +19,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title) return;
-    axios.post('http://localhost:5000/api/tasks', { title, description })
+    axios.post('https://task-manager-assessment-v39u.onrender.com/api/tasks', { title, description })
       .then(res => {
         setTasks([res.data, ...tasks]);
         setTitle('');
@@ -29,7 +29,7 @@ function App() {
 
   // Delete Task
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/tasks/${id}`)
+    axios.delete(`https://task-manager-assessment-v39u.onrender.com/api/tasks/${id}`)
       .then(() => {
         setTasks(tasks.filter(task => task._id !== id));
       });
