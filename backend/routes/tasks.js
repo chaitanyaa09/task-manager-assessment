@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
+const verifyToken = require('../middleware/authMiddleware'); // <--- Import the Guard
 
-// GET all tasks
+// GET all tasks (Optional: You can protect this too if you want)
 router.get('/', async (req, res) => {
   try {
     const tasks = await Task.find().sort({ createdAt: -1 });
@@ -12,8 +13,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST new task
-router.post('/', async (req, res) => {
+// POST new task (PROTECTED: Users must be logged in to add tasks)
+router.post('/', verifyToken, async (req, res) => {  // <--- Added verifyToken here
   const task = new Task(req.body);
   try {
     const newTask = await task.save();
@@ -23,8 +24,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT update task
-router.put('/:id', async (req, res) => {
+// PUT update task (PROTECTED)
+router.put('/:id', verifyToken, async (req, res) => { // <--- Added verifyToken here
   try {
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedTask);
@@ -33,8 +34,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE task
-router.delete('/:id', async (req, res) => {
+// DELETE task (PROTECTED)
+router.delete('/:id', verifyToken, async (req, res) => { // <--- Added verifyToken here
   try {
     await Task.findByIdAndDelete(req.params.id);
     res.json({ message: 'Task deleted' });
